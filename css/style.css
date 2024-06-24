@@ -1,0 +1,14 @@
+#query {
+    height: 300px;
+    width: 100%;
+    margin: 20px auto;
+}
+
+#button {
+    margin: 10px auto;
+}
+
+#result {
+    white-space: pre;
+    margin: 20px auto;
+}

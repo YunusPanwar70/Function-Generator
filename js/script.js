@@ -5,9 +5,8 @@ const copyButton = document.getElementById("copy")
 
 function generateFunction(query) {
     if (query === "") {
-        alert("Please Enter Query")
-        return
-    }
+        return alert("Please Enter Query")
+    };
     // Split the query into lines
     const lines = query.trim().split("\n");
 

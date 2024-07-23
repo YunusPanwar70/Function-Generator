@@ -5,7 +5,8 @@ const copyButton = document.getElementById("copy")
 
 function generateFunction(query) {
     if (query === "") {
-        return alert("Please Enter Query")
+        alert("Please Enter Query")
+        return
     };
     // Split the query into lines
     const lines = query.trim().split("\n");
@@ -33,7 +34,6 @@ function generateFunction(query) {
         return;
     }
     const functionName = functionNameMatch[1];
-    const parameters = functionNameMatch[2];
 
     // Generate the function with a placeholder return statement
     let functionBody = `function ${functionName}() {\n    return\n}\n\n`;
@@ -57,7 +57,7 @@ function generateFunction(query) {
             const parts = line.split("➞");
             if (parts.length === 2) {
                 const outputPart = parts[1].trim();
-                outputs += `// ➞${outputPart}\n`;
+                outputs += `// ➞ ${outputPart}\n`;
             }
         }
     });
@@ -65,17 +65,21 @@ function generateFunction(query) {
     result.innerText = question + functionBody + consoleLogs + outputs;
 }
 
-button.addEventListener('click', function () {
+function generateQueryInput() {
     generateFunction(queryInput.value);
-});
+}
+button.addEventListener('click', generateQueryInput);
+
 const copy = async (text) => {
     if (text == "") {
         alert("Nothing copied");
         return
     }
     await navigator.clipboard.writeText(text)
+    alert('Copied to clipboard')
 };
 
-copyButton.addEventListener('click', function () {
+function handelCopyBtn() {
     copy(result.innerText)
-})
+}
+copyButton.addEventListener('click', handelCopyBtn);

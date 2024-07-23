@@ -4,8 +4,8 @@ const result = document.getElementById("result");
 const copyButton = document.getElementById("copy")
 
 function generateFunction(query) {
-    if (query == "") {
-        alert("madarchod query to daal")
+    if (query === "") {
+        alert("Please Enter Query")
         return
     }
     // Split the query into lines
@@ -71,7 +71,7 @@ button.addEventListener('click', function () {
 });
 const copy = async (text) => {
     if (text == "") {
-        alert("nothing copied");
+        alert("Nothing copied");
         return
     }
     await navigator.clipboard.writeText(text)
